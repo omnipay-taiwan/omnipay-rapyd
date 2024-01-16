@@ -10,17 +10,32 @@ use Omnipay\Common\Message\AbstractRequest as BaseAbstractRequest;
  */
 abstract class AbstractRequest extends BaseAbstractRequest
 {
-    protected $liveEndpoint = 'https://api.example.com';
-    protected $testEndpoint = 'https://api-test.example.com';
+    protected $liveEndpoint = 'https://api.rapyd.net';
+    protected $testEndpoint = 'https://sandboxapi.rapyd.net';
 
-    public function getKey()
+    protected function getEndpoint()
     {
-        return $this->getParameter('key');
+        return $this->getTestMode() ? $this->testEndpoint : $this->liveEndpoint;
     }
 
-    public function setKey($value)
+    public function getAccessKey()
     {
-        return $this->setParameter('key', $value);
+        return $this->getParameter('access_key');
+    }
+
+    public function setAccessKey($value)
+    {
+        return $this->setParameter('access_key', $value);
+    }
+
+    public function getSecretKey()
+    {
+        return $this->getParameter('secret_key');
+    }
+
+    public function setSecretKey($value)
+    {
+        return $this->setParameter('secret_key', $value);
     }
 
     public function sendData($data)
@@ -40,11 +55,6 @@ abstract class AbstractRequest extends BaseAbstractRequest
             'expire_date' => $this->getCard()->getExpiryDate('mY'),
             'start_date' => $this->getCard()->getStartDate('mY'),
         ];
-    }
-
-    protected function getEndpoint()
-    {
-        return $this->getTestMode() ? $this->testEndpoint : $this->liveEndpoint;
     }
 
     protected function createResponse($data)

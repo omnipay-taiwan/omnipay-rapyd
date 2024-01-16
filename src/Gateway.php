@@ -18,19 +18,30 @@ class Gateway extends AbstractGateway
     public function getDefaultParameters()
     {
         return [
-            'key' => '',
+            'access_key' => '',
+            'secret_key' => '',
             'testMode' => false,
         ];
     }
 
-    public function getKey()
+    public function getAccessKey()
     {
-        return $this->getParameter('key');
+        return $this->getParameter('access_key');
     }
 
-    public function setKey($value)
+    public function setAccessKey($value)
     {
-        return $this->setParameter('key', $value);
+        return $this->setParameter('access_key', $value);
+    }
+
+    public function getSecretKey()
+    {
+        return $this->getParameter('secret_key');
+    }
+
+    public function setSecretKey($value)
+    {
+        return $this->setParameter('secret_key', $value);
     }
 
     /**

@@ -1,7 +1,8 @@
 <?php
 
-namespace Omnipay\Rapyd\Message;
+namespace Omnipay\Rapyd\Tests\Message;
 
+use Omnipay\Rapyd\Message\Response;
 use Omnipay\Tests\TestCase;
 
 class ResponseTest extends TestCase

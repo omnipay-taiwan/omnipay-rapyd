@@ -1,6 +1,6 @@
 <?php
 
-namespace Omnipay\Rapyd\Test\Fixtures;
+namespace Omnipay\Rapyd\Tests\Fixtures;
 
 use Omnipay\Rapyd\Signature;
 

@@ -1,8 +1,9 @@
 <?php
 
-namespace Omnipay\Rapyd\Message;
+namespace Omnipay\Rapyd\Tests\Message;
 
 use Omnipay\Common\CreditCard;
+use Omnipay\Rapyd\Message\AuthorizeRequest;
 use Omnipay\Tests\TestCase;
 
 class AuthorizeRequestTest extends TestCase

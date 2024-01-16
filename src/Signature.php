@@ -34,7 +34,7 @@ class Signature
     public function getHeaders($method, $path, $body = null)
     {
         $idempotency = $this->generateString();
-        $httpMethod = $method;
+        $httpMethod = strtolower($method);
         $salt = $this->generateString();
         $date = new DateTime();
         $timestamp = $date->getTimestamp();

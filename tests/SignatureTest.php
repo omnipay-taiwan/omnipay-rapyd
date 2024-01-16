@@ -1,8 +1,9 @@
 <?php
 
-namespace Omnipay\Rapyd\Test;
+namespace Omnipay\Rapyd\Tests;
 
 use DateTime;
+use Omnipay\Rapyd\Tests\Fixtures\StubSignature;
 use PHPUnit\Framework\TestCase;
 
 class SignatureTest extends TestCase
@@ -12,7 +13,7 @@ class SignatureTest extends TestCase
 
     public function testGetHeaders(): void
     {
-        $signature = new Fixtures\StubSignature($this->accessKey, $this->secretKey);
+        $signature = new StubSignature($this->accessKey, $this->secretKey);
         $body = [
             "amount" => 100,
             "complete_checkout_url" => "https://example.com/complete",
@@ -23,7 +24,7 @@ class SignatureTest extends TestCase
         ];
 
         self::assertEquals(
-            $this->makeRequest('POST', '', $body),
+            $this->makeRequest('post', '', $body),
             $signature->getHeaders('POST', '', $body)
         );
     }

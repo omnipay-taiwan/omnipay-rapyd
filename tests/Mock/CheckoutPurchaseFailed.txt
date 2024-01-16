@@ -1,0 +1,7 @@
+HTTP/1.1 200 OK
+Server: Apache
+Date: Sun, 11 May 2014 21:17:31 GMT
+Content-Type: application/json; charset=utf-8
+Status: 200 OK
+
+{"status":{"error_code":"ERROR_HOSTED_PAGE_PAYMENT_METHOD_TYPE_CATEGORIES_NOT_ENABLED","status":"ERROR","message":"The request tried to create a checkout page, but one or more of the payment method type categories was not enabled. The request was rejected. Corrective action: Use the Client Portal to enable the payment method type categories you want to appear in the checkout page.","response_code":"ERROR_HOSTED_PAGE_PAYMENT_METHOD_TYPE_CATEGORIES_NOT_ENABLED","operation_id":"49e47627-27e7-4102-bb6b-3b1a03229f13"}}

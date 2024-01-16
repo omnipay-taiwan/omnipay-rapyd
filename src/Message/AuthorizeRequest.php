@@ -2,6 +2,8 @@
 
 namespace Omnipay\Rapyd\Message;
 
+use Omnipay\Rapyd\Traits\HasRapyd;
+
 /**
  * Authorize Request
  *
@@ -9,6 +11,8 @@ namespace Omnipay\Rapyd\Message;
  */
 class AuthorizeRequest extends AbstractRequest
 {
+    use HasRapyd;
+
     public function getData()
     {
         $this->validate('amount', 'card');

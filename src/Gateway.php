@@ -4,12 +4,15 @@ namespace Omnipay\Rapyd;
 
 use Omnipay\Common\AbstractGateway;
 use Omnipay\Rapyd\Message\AuthorizeRequest;
+use Omnipay\Rapyd\Traits\HasRapyd;
 
 /**
  * Gateway
  */
 class Gateway extends AbstractGateway
 {
+    use HasRapyd;
+
     public function getName()
     {
         return 'Rapyd';
@@ -22,26 +25,6 @@ class Gateway extends AbstractGateway
             'secret_key' => '',
             'testMode' => false,
         ];
-    }
-
-    public function getAccessKey()
-    {
-        return $this->getParameter('access_key');
-    }
-
-    public function setAccessKey($value)
-    {
-        return $this->setParameter('access_key', $value);
-    }
-
-    public function getSecretKey()
-    {
-        return $this->getParameter('secret_key');
-    }
-
-    public function setSecretKey($value)
-    {
-        return $this->setParameter('secret_key', $value);
     }
 
     /**

@@ -4,6 +4,7 @@ namespace Omnipay\Rapyd\Message;
 
 use Omnipay\Common\Exception\InvalidRequestException;
 use Omnipay\Rapyd\AccountFundingTransaction;
+use Omnipay\Rapyd\ClientHelper;
 use Omnipay\Rapyd\CustomElements;
 use Omnipay\Rapyd\Item;
 use Omnipay\Rapyd\PaymentFees;
@@ -595,25 +596,12 @@ class CheckoutPurchaseRequest extends AbstractRequest
      */
     public function sendData($data)
     {
+        $uri = $this->getEndpoint().'/v1/checkout';
         $signature = new Signature($this->getAccessKey(), $this->getSecretKey());
+        $clientHelper = new ClientHelper($this->httpClient, $signature);
+        $result = $clientHelper->request('POST', $uri, [], $data);
 
-        $path = '/v1/checkout';
-        $response = $this->httpClient->request(
-            'POST',
-            $this->getEndpoint().$path,
-            $signature->getHeaders('POST', $path, $data),
-            json_encode($data, JSON_UNESCAPED_SLASHES)
-        );
-
-        $result = json_decode((string) $response->getBody(), true);
-        if ($result['status']['status'] !== 'SUCCESS') {
-            throw new InvalidRequestException($result['status']['message']);
-        }
-
-        return $this->response = new CheckoutPurchaseResponse(
-            $this,
-            $result
-        );
+        return $this->response = new CheckoutPurchaseResponse($this, $result);
     }
 
     /**

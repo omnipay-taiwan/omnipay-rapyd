@@ -587,7 +587,7 @@ class CheckoutPurchaseRequest extends AbstractRequest
             'requested_currency' => $this->getRequestedCurrency(),
             'statement_descriptor' => $this->getStatementDescriptor(),
         ], static function ($value) {
-            return $value !== null;
+            return $value !== null && $value !== '';
         });
     }
 

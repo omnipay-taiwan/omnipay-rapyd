@@ -6,22 +6,21 @@ trait HasRapyd
 {
     public function getAccessKey()
     {
-        return $this->getParameter('access_key');
+        return $this->getParameter('accessKey');
     }
 
     public function setAccessKey($value)
     {
-        return $this->setParameter('access_key', $value);
+        return $this->setParameter('accessKey', $value);
     }
 
     public function getSecretKey()
     {
-        return $this->getParameter('secret_key');
+        return $this->getParameter('secretKey');
     }
 
     public function setSecretKey($value)
     {
-        return $this->setParameter('secret_key', $value);
+        return $this->setParameter('secretKey', $value);
     }
-
 }

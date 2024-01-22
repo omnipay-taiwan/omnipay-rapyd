@@ -31,11 +31,6 @@ class CheckoutGateway extends AbstractGateway
         ];
     }
 
-    public function authorize(array $options = [])
-    {
-        return $this->createRequest(AuthorizeRequest::class, $options);
-    }
-
     public function purchase(array $options = [])
     {
         return $this->createRequest(CheckoutPurchaseRequest::class, $options);

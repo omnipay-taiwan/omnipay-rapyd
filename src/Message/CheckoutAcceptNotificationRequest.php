@@ -47,13 +47,31 @@ class CheckoutAcceptNotificationRequest extends AbstractRequest implements Notif
         return $this->response = new CheckoutAcceptNotificationResponse($this, $data);
     }
 
+    public function getTransactionId()
+    {
+        return $this->getNotificationResponse()->getTransactionId();
+    }
+
+    public function getTransactionReference()
+    {
+        return $this->getNotificationResponse()->getTransactionReference();
+    }
+
     public function getTransactionStatus()
     {
-        // TODO: Implement getTransactionStatus() method.
+        return $this->getNotificationResponse()->getTransactionStatus();
     }
 
     public function getMessage()
     {
-        // TODO: Implement getMessage() method.
+        return $this->getNotificationResponse()->getMessage();
+    }
+
+    /**
+     * @return CheckoutAcceptNotificationResponse
+     */
+    private function getNotificationResponse()
+    {
+        return ! $this->response ? $this->send() : $this->response;
     }
 }

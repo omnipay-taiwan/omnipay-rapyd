@@ -3,9 +3,11 @@
 namespace Omnipay\Rapyd;
 
 use Omnipay\Common\AbstractGateway;
+use Omnipay\Common\Message\NotificationInterface;
 use Omnipay\Rapyd\Message\AuthorizeRequest;
-use Omnipay\Rapyd\Message\CheckoutPurchaseRequest;
 use Omnipay\Rapyd\Message\CheckoutFetchTransactionRequest;
+use Omnipay\Rapyd\Message\CheckoutAcceptNotificationRequest;
+use Omnipay\Rapyd\Message\CheckoutPurchaseRequest;
 use Omnipay\Rapyd\Traits\HasRapyd;
 
 /**
@@ -42,5 +44,10 @@ class CheckoutGateway extends AbstractGateway
     public function fetchTransaction(array $options)
     {
         return $this->createRequest(CheckoutFetchTransactionRequest::class, $options);
+    }
+
+    public function acceptNotification(array $options = []): NotificationInterface
+    {
+        return $this->createRequest(CheckoutAcceptNotificationRequest::class, $options);
     }
 }

@@ -30,7 +30,7 @@ class CheckoutFetchTransactionRequestTest extends TestCase
 
         $response = $fetchTransactionRequest->send();
 
-        self::assertEquals('NEW', $response->getCode());
+        self::assertEquals(null, $response->getCode());
         self::assertFalse($response->isSuccessful());
         self::assertEquals('checkout_ac18419fb53bceca963a43560ab3f591', $response->getTransactionReference());
 
@@ -66,7 +66,7 @@ class CheckoutFetchTransactionRequestTest extends TestCase
 
         $response = $fetchTransactionRequest->send();
 
-        self::assertEquals('DON', $response->getCode());
+        self::assertEquals('CLO', $response->getCode());
         self::assertTrue($response->isSuccessful());
         self::assertEquals('checkout_ac18419fb53bceca963a43560ab3f591', $response->getTransactionReference());
     }

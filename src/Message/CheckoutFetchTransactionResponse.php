@@ -6,21 +6,22 @@ class CheckoutFetchTransactionResponse extends AbstractResponse
 {
     public function isSuccessful()
     {
-        return $this->getCode() === 'DON';
+        return $this->getCode() === 'CLO';
     }
 
     /**
      * status
-     * Status of the hosted page. One of the following:
-     * - NEW - The hosted page was created.
-     * - DON - Done. The payment was completed.
-     * - EXP - The hosted page expired.
-     * - INP - Creation of the payment is still in progress.
-     * - DEC - Rapyd Protect blocked the payment.
+     * Indicates the status of the payment. One of the following:
+     * - ACT - Active and awaiting completion of 3DS or capture. Can be updated.
+     * - CAN - Canceled by the client or the customer's bank.
+     * - CLO - Closed and paid.
+     * - ERR - Error. An attempt was made to create or complete a payment, but it failed.
+     * - EXP - The payment has expired.
+     * - REV - Reversed by Rapyd. See cancel_reason.
      */
     public function getCode()
     {
-        return $this->data['data']['status'];
+        return $this->data['data']['payment']['status'];
     }
 
     public function getTransactionId()

@@ -6,7 +6,9 @@ class CheckoutFetchTransactionResponse extends AbstractResponse
 {
     public function isSuccessful()
     {
-        return $this->getCode() === 'CLO';
+        $payment = $this->data['data']['payment'];
+
+        return $payment['captured'] === true && $payment['refunded'] === false;
     }
 
     /**

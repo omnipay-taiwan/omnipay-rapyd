@@ -34,4 +34,23 @@ class CheckoutRefundRequestTest extends TestCase
             'reason' => 'reason',
         ], $data);
     }
+
+    public function testSendAndComplete()
+    {
+        // $request = new CheckoutRefundRequest(
+        //     new \Omnipay\Common\Http\Client(new \GuzzleHttp\Client()),
+        //     $this->getHttpRequest()
+        // );
+        $request = new CheckoutRefundRequest($this->getHttpClient(), $this->getHttpRequest());
+        $this->setMockHttpResponse('CheckoutPurchaseSuccess.txt');
+
+        $request->initialize(array_merge([
+            'access_key' => '41473424D6BDB8C19778',
+            'secret_key' => 'a699faeb232ecf91666c7db11e2ec615a90ef3139d059273f963cbb28acd7ff582d8f08fd34419e8',
+            'testMode' => 1,
+        ], [
+        ]));
+
+        $response = $request->send();
+    }
 }

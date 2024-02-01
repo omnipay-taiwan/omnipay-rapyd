@@ -9,11 +9,17 @@ use Omnipay\Rapyd\CustomElements;
 use Omnipay\Rapyd\Item;
 use Omnipay\Rapyd\PaymentFees;
 use Omnipay\Rapyd\Signature;
+use Omnipay\Rapyd\Traits\HasEwallets;
+use Omnipay\Rapyd\Traits\HasMerchantReferenceId;
+use Omnipay\Rapyd\Traits\HasMetadata;
 use Omnipay\Rapyd\Traits\HasRapyd;
 
 class CheckoutPurchaseRequest extends AbstractRequest
 {
     use HasRapyd;
+    use HasMerchantReferenceId;
+    use HasEwallets;
+    use HasMetadata;
 
     /**
      * Details of an account funding transaction (AFT), which transfers funds from a card to a cardholder's wallet.
@@ -245,21 +251,6 @@ class CheckoutPurchaseRequest extends AbstractRequest
         return $this->getParameter('ewallet');
     }
 
-    /**
-     * @param  array  $value
-     */
-    public function setEwallets($value)
-    {
-        return $this->setParameter('ewallets', $value);
-    }
-
-    /**
-     * @return ?array
-     */
-    public function getEwallets()
-    {
-        return $this->getParameter('ewallets');
-    }
 
     /**
      * Time when the payment expires if it is not completed, in Unix time.
@@ -339,39 +330,6 @@ class CheckoutPurchaseRequest extends AbstractRequest
         return $this->getParameter('merchant_fields');
     }
 
-    /**
-     * Identifier defined by the client for reference purposes. Limit: 45 characters.
-     * @param  string  $value
-     */
-    public function setMerchantReferenceId($value)
-    {
-        return $this->setTransactionId($value);
-    }
-
-    /**
-     * @return ?string
-     */
-    public function getMerchantReferenceId()
-    {
-        return $this->getTransactionId();
-    }
-
-    /**
-     * A JSON object defined by the client. See [Metadata](https://docs.rapyd.net/en/metadata.html).
-     * @param  array  $value
-     */
-    public function setMetadata($value)
-    {
-        return $this->setParameter('metadata', $value);
-    }
-
-    /**
-     * @return ?array
-     */
-    public function getMetadata()
-    {
-        return $this->getParameter('metadata');
-    }
 
     /**
      * End of the time when the customer can use the hosted page, in Unix time.

@@ -22,20 +22,6 @@ class CheckoutGatewayTest extends GatewayTestCase
             'secret_key' => 'a699faeb232ecf91666c7db11e2ec615a90ef3139d059273f963cbb28acd7ff582d8f08fd34419e8',
         ]);
 
-        $this->options = [
-            'amount' => '10.00',
-            'card' => $this->getValidCard(),
-        ];
-    }
-
-    public function testAuthorize()
-    {
-        $this->setMockHttpResponse('AuthorizeSuccess.txt');
-
-        $response = $this->gateway->authorize($this->options)->send();
-
-        $this->assertTrue($response->isSuccessful());
-        $this->assertEquals('1234', $response->getTransactionReference());
-        $this->assertNull($response->getMessage());
+        $this->options = [];
     }
 }

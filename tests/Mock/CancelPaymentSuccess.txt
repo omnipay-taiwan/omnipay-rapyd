@@ -1,0 +1,83 @@
+HTTP/1.1 200 OK
+Server: Apache
+Date: Sun, 11 May 2014 21:17:31 GMT
+Content-Type: application/json; charset=utf-8
+Status: 200 OK
+
+{
+    "status": {
+        "error_code": "",
+        "status": "SUCCESS",
+        "message": "",
+        "response_code": "",
+        "operation_id": "11fc3c4a-d938-48aa-b8fd-c00b8f180b7f"
+    },
+    "data": {
+        "id": "payment_00778be57b9087180596678817973e61",
+        "amount": 0,
+        "original_amount": 101,
+        "is_partial": false,
+        "currency_code": "PHP",
+        "country_code": "PH",
+        "status": "CAN",
+        "description": "Cancelable payment",
+        "merchant_reference_id": "",
+        "customer_token": "cus_907dc0e443fde54d2bbbdde8915a3417",
+        "payment_method": "other_cb92f8c4370e36cb1b9f75a30b5ebe61",
+        "payment_method_data": {},
+        "expiration": 1623073515,
+        "captured": true,
+        "refunded": false,
+        "refunded_amount": 0,
+        "receipt_email": "",
+        "redirect_url": "",
+        "complete_payment_url": "",
+        "error_payment_url": "",
+        "receipt_number": "",
+        "flow_type": "",
+        "address": null,
+        "statement_descriptor": "Rapyd",
+        "transaction_id": "",
+        "created_at": 1621863915,
+        "metadata": {
+            "merchant_defined": true
+        },
+        "failure_code": "",
+        "failure_message": "",
+        "paid": false,
+        "paid_at": 0,
+        "dispute": null,
+        "refunds": null,
+        "order": null,
+        "outcome": null,
+        "visual_codes": {},
+        "textual_codes": {
+            "code": "8765433177018479"
+        },
+        "instructions": [],
+        "ewallet_id": "ewallet_c67c44ec60d5c2e62480aa7c76b3f8b4",
+        "ewallets": [
+            {
+                "ewallet_id": "ewallet_c67c44ec60d5c2e62480aa7c76b3f8b4",
+                "amount": 101,
+                "percent": 100,
+                "refunded_amount": 0
+            }
+        ],
+        "payment_method_options": {},
+        "payment_method_type": "ph_bankatmotc_cash",
+        "payment_method_type_category": "cash",
+        "fx_rate": 1,
+        "merchant_requested_currency": null,
+        "merchant_requested_amount": null,
+        "fixed_side": "",
+        "payment_fees": null,
+        "invoice": "",
+        "escrow": null,
+        "group_payment": "",
+        "cancel_reason": null,
+        "initiation_type": "customer_present",
+        "mid": "",
+        "next_action": "not_applicable"
+    }
+}

@@ -2,11 +2,11 @@
 
 namespace Omnipay\Rapyd\Message;
 
-class CheckoutFetchTransactionResponse extends AbstractResponse
+class PaymentCancelResponse extends AbstractResponse
 {
     public function isSuccessful()
     {
-        return $this->getCode() === 'CLO' && $this->data['data']['payment']['refunded'] === false;
+        return $this->getCode() === 'CAN';
     }
 
     /**
@@ -21,12 +21,7 @@ class CheckoutFetchTransactionResponse extends AbstractResponse
      */
     public function getCode()
     {
-        return $this->data['data']['payment']['status'];
-    }
-
-    public function getTransactionId()
-    {
-        return $this->data['data']['payment']['merchant_reference_id'];
+        return $this->data['data']['status'];
     }
 
     public function getTransactionReference()

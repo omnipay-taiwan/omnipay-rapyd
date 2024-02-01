@@ -1,7 +1,0 @@
-HTTP/1.1 200 OK
-Server: Apache
-Date: Sun, 11 May 2014 21:17:31 GMT
-Content-Type: application/json; charset=utf-8
-Status: 200 OK
-
-{"status":{"error_code":"","status":"SUCCESS","message":"","response_code":"","operation_id":"33ef5126-00e7-420e-a11d-57f5cfbd1bc0"},"data":{"id":"refund_213d6b1987bfc58d27816b805e0506d8","amount":105.58,"payment":"payment_29bd65de02c9a6f558599b2348fe4b1d","currency":"USD","failure_reason":"","metadata":{},"reason":"","status":"Completed","receipt_number":0,"created_at":1706771437,"updated_at":1706771437,"merchant_reference_id":"","payment_created_at":1706771402,"payment_method_type":"us_debit_visa_card","ewallets":[{"ewallet":"ewallet_f04353b1ac43f5f4f68906fdd2669ea0","amount":105.58}],"proportional_refund":true,"merchant_debited_amount":null,"merchant_debited_currency":null,"fx_rate":null,"fixed_side":null}}

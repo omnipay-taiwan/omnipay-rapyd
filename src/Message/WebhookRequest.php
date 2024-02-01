@@ -6,7 +6,7 @@ use Omnipay\Common\Exception\InvalidResponseException;
 use Omnipay\Common\Message\NotificationInterface;
 use Omnipay\Rapyd\Traits\HasRapyd;
 
-class CheckoutAcceptNotificationRequest extends AbstractRequest implements NotificationInterface
+class WebhookRequest extends AbstractRequest implements NotificationInterface
 {
     use HasRapyd;
 
@@ -44,7 +44,7 @@ class CheckoutAcceptNotificationRequest extends AbstractRequest implements Notif
 
     public function sendData($data)
     {
-        return $this->response = new CheckoutAcceptNotificationResponse($this, $data);
+        return $this->response = new WebhookResponse($this, $data);
     }
 
     public function getTransactionId()
@@ -68,7 +68,7 @@ class CheckoutAcceptNotificationRequest extends AbstractRequest implements Notif
     }
 
     /**
-     * @return CheckoutAcceptNotificationResponse
+     * @return WebhookResponse
      */
     private function getNotificationResponse()
     {

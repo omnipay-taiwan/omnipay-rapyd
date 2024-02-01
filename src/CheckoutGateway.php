@@ -4,7 +4,7 @@ namespace Omnipay\Rapyd;
 
 use Omnipay\Common\AbstractGateway;
 use Omnipay\Rapyd\Message\AuthorizeRequest;
-use Omnipay\Rapyd\Message\CheckoutAcceptNotificationRequest;
+use Omnipay\Rapyd\Message\WebhookRequest;
 use Omnipay\Rapyd\Message\CheckoutFetchTransactionRequest;
 use Omnipay\Rapyd\Message\CheckoutPurchaseRequest;
 use Omnipay\Rapyd\Message\RefundCreateRequest;
@@ -44,7 +44,7 @@ class CheckoutGateway extends AbstractGateway
 
     public function acceptNotification(array $options = [])
     {
-        return $this->createRequest(CheckoutAcceptNotificationRequest::class, $options);
+        return $this->createRequest(WebhookRequest::class, $options);
     }
 
     public function void(array $options = [])

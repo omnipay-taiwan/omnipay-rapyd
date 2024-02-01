@@ -3,11 +3,11 @@
 namespace Omnipay\Rapyd\Tests\Message;
 
 use Omnipay\Common\Message\NotificationInterface;
-use Omnipay\Rapyd\Message\CheckoutAcceptNotificationRequest;
+use Omnipay\Rapyd\Message\WebhookRequest;
 use Omnipay\Tests\TestCase;
 use Symfony\Component\HttpFoundation\Request;
 
-class CheckoutAcceptNotificationRequestTest extends TestCase
+class WebhookRequestTest extends TestCase
 {
     public function testPaymentCompleted()
     {
@@ -22,7 +22,7 @@ class CheckoutAcceptNotificationRequestTest extends TestCase
             'HTTP_SALT' => $mockResponse->getHeader('HTTP-SALT')[0],
         ], (string) $mockResponse->getBody());
 
-        $request = new CheckoutAcceptNotificationRequest(
+        $request = new WebhookRequest(
             $this->getHttpClient(),
             $httpRequest
         );
@@ -55,7 +55,7 @@ class CheckoutAcceptNotificationRequestTest extends TestCase
             'HTTP_SALT' => $mockResponse->getHeader('HTTP-SALT')[0],
         ], (string) $mockResponse->getBody());
 
-        $request = new CheckoutAcceptNotificationRequest(
+        $request = new WebhookRequest(
             $this->getHttpClient(),
             $httpRequest
         );

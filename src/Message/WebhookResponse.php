@@ -4,7 +4,7 @@ namespace Omnipay\Rapyd\Message;
 
 use Omnipay\Common\Message\NotificationInterface;
 
-class CheckoutAcceptNotificationResponse extends AbstractResponse implements NotificationInterface
+class WebhookResponse extends AbstractResponse implements NotificationInterface
 {
     public function getTransactionStatus()
     {

@@ -11,7 +11,7 @@ use Omnipay\Rapyd\Traits\HasMetadata;
 use Omnipay\Rapyd\Traits\HasPaymentId;
 use Omnipay\Rapyd\Traits\HasRapyd;
 
-class CheckoutRefundRequest extends AbstractRequest
+class RefundCreateRequest extends AbstractRequest
 {
     use HasRapyd;
     use HasMerchantReferenceId;
@@ -65,6 +65,6 @@ class CheckoutRefundRequest extends AbstractRequest
         $clientHelper = new ClientHelper($this->httpClient, $signature);
         $result = $clientHelper->request('POST', $uri, $data);
 
-        return $this->response = new CheckoutRefundResponse($this, $result);
+        return $this->response = new RefundCreateResponse($this, $result);
     }
 }

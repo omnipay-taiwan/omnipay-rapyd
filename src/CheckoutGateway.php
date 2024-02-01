@@ -7,7 +7,7 @@ use Omnipay\Rapyd\Message\AuthorizeRequest;
 use Omnipay\Rapyd\Message\CheckoutAcceptNotificationRequest;
 use Omnipay\Rapyd\Message\CheckoutFetchTransactionRequest;
 use Omnipay\Rapyd\Message\CheckoutPurchaseRequest;
-use Omnipay\Rapyd\Message\CheckoutRefundRequest;
+use Omnipay\Rapyd\Message\RefundCreateRequest;
 use Omnipay\Rapyd\Message\PaymentCancelRequest;
 use Omnipay\Rapyd\Traits\HasRapyd;
 
@@ -54,6 +54,6 @@ class CheckoutGateway extends AbstractGateway
 
     public function refund(array $options = [])
     {
-        return $this->createRequest(CheckoutRefundRequest::class, $options);
+        return $this->createRequest(RefundCreateRequest::class, $options);
     }
 }

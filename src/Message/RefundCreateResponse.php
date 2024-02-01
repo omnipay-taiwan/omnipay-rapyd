@@ -2,7 +2,7 @@
 
 namespace Omnipay\Rapyd\Message;
 
-class CheckoutRefundResponse extends AbstractResponse
+class RefundCreateResponse extends AbstractResponse
 {
     public function isSuccessful()
     {

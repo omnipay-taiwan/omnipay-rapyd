@@ -3,14 +3,14 @@
 namespace Omnipay\Rapyd\Tests\Message;
 
 
-use Omnipay\Rapyd\Message\CheckoutRefundRequest;
+use Omnipay\Rapyd\Message\RefundCreateRequest;
 use Omnipay\Tests\TestCase;
 
-class CheckoutRefundRequestTest extends TestCase
+class RefundCreateRequestTest extends TestCase
 {
     public function testCreateRefundParameters()
     {
-        $request = new CheckoutRefundRequest($this->getHttpClient(), $this->getHttpRequest());
+        $request = new RefundCreateRequest($this->getHttpClient(), $this->getHttpRequest());
 
         $request->initialize(array_merge([
             'access_key' => '41473424D6BDB8C19778',
@@ -41,7 +41,7 @@ class CheckoutRefundRequestTest extends TestCase
         //     new \Omnipay\Common\Http\Client(new \GuzzleHttp\Client()),
         //     $this->getHttpRequest()
         // );
-        $request = new CheckoutRefundRequest($this->getHttpClient(), $this->getHttpRequest());
+        $request = new RefundCreateRequest($this->getHttpClient(), $this->getHttpRequest());
         $this->setMockHttpResponse('CreateRefundSuccessAndStatusIsCompleted.txt');
 
         $request->initialize(array_merge([

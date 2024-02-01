@@ -1,0 +1,124 @@
+HTTP/1.1 200 OK
+Server: Apache
+Date: Sun, 11 May 2014 21:17:31 GMT
+Content-Type: application/json
+Http-Timestamp: 1705910981
+Http-Signature: NGQ0MGYzZWYxZjcwODcyYmU5Nzg4NzZkOWNlZjBlM2UyZjliNDIyY2ExYjA1OGE2MDgyZTk2NTllMjZiZTBiZQ==
+Http-Salt: 0IWZS83/E8w2wvDbqG8HGQ==
+Status: 200 OK
+
+{
+    "token": "wh_fd2e468c8c8d0212b41f3cb9c1a59804",
+    "type": "PAYMENT_CANCELED",
+    "data": {
+        "id": "payment_73e7b358841400509e208bd1213e38a7",
+        "mid": "",
+        "paid": false,
+        "order": null,
+        "amount": 0,
+        "escrow": null,
+        "status": "CAN",
+        "address": null,
+        "dispute": null,
+        "fx_rate": 1,
+        "invoice": "",
+        "outcome": null,
+        "paid_at": 0,
+        "refunds": null,
+        "captured": true,
+        "ewallets": [
+            {
+                "amount": 997,
+                "percent": 100,
+                "ewallet_id": "ewallet_c67c44ec60d5c2e62480aa7c76b3f8b4",
+                "refunded_amount": 0
+            }
+        ],
+        "metadata": {
+            "merchant_defined": true
+        },
+        "refunded": false,
+        "auth_code": null,
+        "flow_type": "",
+        "created_at": 1692522784,
+        "error_code": "",
+        "ewallet_id": "ewallet_c67c44ec60d5c2e62480aa7c76b3f8b4",
+        "expiration": 1693732384,
+        "fixed_side": "",
+        "is_partial": false,
+        "description": "Payment by bank transfer",
+        "next_action": "not_applicable",
+        "country_code": "TH",
+        "failure_code": "",
+        "instructions": [
+            {
+                "name": "instructions",
+                "steps": [
+                    {
+                        "step1": "Scan QR Code."
+                    },
+                    {
+                        "step2": "Enter OTP to authorize Payment."
+                    },
+                    {
+                        "step3": "Complete Payment."
+                    }
+                ]
+            }
+        ],
+        "payment_fees": null,
+        "redirect_url": "",
+        "visual_codes": {
+            "qrcode_url": "https://d2o8h9r6avao9o.cloudfront.net/payments/06b27687-7c77-4422-ba8f-851dfb5a5841_qrcode.png",
+            "qrcode_image_base64": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAANkAAADZCAMAAACaYGVEAAAABlBMVEUAAAD///+l2Z/dAAACGElEQVR42u3cQW7DMAwEwPj/n+69bexdSjHSdHQLYMEaXRYk3T6OT10PMjIyMrKnske7+jdd7/v1kenJyMjIyMguZdMT5vhvr2835CcjIyMjI0tlpzlx/auOvOkbTp8kIyMjI3uVLAikvCQiIyMjI/vDsjzPcicZGRkZ2UZZXXFMZw11TXNfV46MjIzsH8j6afBdv26fwJORkZF9smxP/TEdO08T7PRkZGRkZGRPZXWGBM2nxe+YVmshMjIyMrIwz6ajg2Df9PRBKZVUMWRkZGRko0nxC8+0eJNkZGRkZLMqpq5Gpo2peiaSZCQZGRkZ2WhiMe4ebTnhNN3IyMjIyGa9qxxRn7e+uyI4ycjIyMiObX9/Ng2rxVgrLpuMjIyMLJxY1JXKnq5TPRopunJkZGRkZFe9q3rsHHyPlG+f3gEZGRkZ2aUsCKTpBKFOxen1nvauyMjIyMiOyddJQUNruoIL3dSVIyMjIyMLDzrtOi3OKE4LlqCKISMjIyM7sv8mWkdXHkFbw5GMjIyMLJVNVw2snfUwhIyMjIzsUrYaHnFRkidYXSAlc2oyMjIystHR6sZUnXV17yqZU5ORkZGRhf2pemo9LXsWs5WMjIyM7NWyet9iiXJfnpGRkZGRhU/uGVXsncCTkZGRka30rurz1nVL/nYyMjIyslJWh0c9td7zOVPfuyIjIyMjO9a/SX3fRUZGRkb2c30B08Vjib0QOaAAAAAASUVORK5CYII="
+        },
+        "cancel_reason": null,
+        "currency_code": "THB",
+        "group_payment": "",
+        "receipt_email": "",
+        "textual_codes": {
+            "pay_code": "paygw_234bf1cd51512fe42dbcc9851e08120f"
+        },
+        "customer_token": "cus_872fb60321b794168635b41c8964bac1",
+        "payment_method": "other_d8ecf5060197044ad6d932b9c06c10c5",
+        "receipt_number": "",
+        "transaction_id": "",
+        "failure_message": "",
+        "initiation_type": "customer_present",
+        "original_amount": 997,
+        "refunded_amount": 0,
+        "error_payment_url": "",
+        "payment_method_data": {},
+        "payment_method_type": "th_thaipromptpayqr_bank",
+        "save_payment_method": true,
+        "complete_payment_url": "",
+        "remitter_information": {},
+        "statement_descriptor": "Doc Team",
+        "merchant_reference_id": "abcd12345678",
+        "payment_method_options": {},
+        "merchant_requested_amount": null,
+        "merchant_requested_currency": null,
+        "payment_method_type_category": "bank_transfer"
+    },
+    "attempts": [
+        {
+            "http_status_code": 200,
+            "http_response_headers": {
+                "date": "Sun, 20 Aug 2023 09:15:20 GMT",
+                "vary": "Accept-Encoding",
+                "server": "nginx",
+                "connection": "close",
+                "x-token-id": "a75bb881-f102-4517-b5e6-2d402ba7e91a",
+                "content-type": "text/plain; charset=UTF-8",
+                "x-request-id": "ef3ce0f2-f1c5-4671-bc10-b6f7a31134f0",
+                "cache-control": "no-cache, private",
+                "transfer-encoding": "chunked"
+            },
+            "error": null
+        }
+    ],
+    "status": "CLO",
+    "last_attempt_at": 1692522919,
+    "created_at": 1692522919,
+    "next_attempt_at": 0
+}

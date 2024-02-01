@@ -8,12 +8,25 @@ class CheckoutAcceptNotificationResponse extends AbstractResponse implements Not
 {
     public function getTransactionStatus()
     {
-        return $this->isSuccessful() ? NotificationInterface::STATUS_COMPLETED : NotificationInterface::STATUS_PENDING;
+        if ($this->isSuccessful()) {
+            return NotificationInterface::STATUS_COMPLETED;
+        }
+
+        if ($this->isCancelled()) {
+            return NotificationInterface::STATUS_FAILED;
+        }
+
+        return NotificationInterface::STATUS_PENDING;
     }
 
     public function isSuccessful()
     {
-        return $this->getCode() === 'CLO';
+        return $this->getCode() === 'CLO' && $this->data['data']['refunded'] === false;
+    }
+
+    public function isCancelled()
+    {
+        return $this->getCode() === 'CAN' || $this->data['data']['refunded'] === true;
     }
 
     /**

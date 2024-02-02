@@ -3,6 +3,7 @@
 namespace Omnipay\Rapyd;
 
 use DateTime;
+use Symfony\Component\HttpFoundation\Request;
 
 class Signature
 {
@@ -52,6 +53,17 @@ class Signature
             'signature' => base64_encode(hash_hmac("sha256", $sigString, $this->secretKey)),
             'idempotency' => $idempotency,
         ];
+    }
+
+    public function checkRequest(Request $request)
+    {
+        return $this->check(
+            $request->headers->get('signature'),
+            $request->getUri(),
+            $request->headers->get('salt'),
+            $request->headers->get('timestamp'),
+            trim($request->getContent())
+        );
     }
 
     public function check($plainText, $urlPath, $salt, $timestamp, $content)

@@ -18,15 +18,7 @@ class WebhookRequest extends AbstractRequest implements NotificationInterface
     {
         $signature = new Signature($this->getAccessKey(), $this->getSecretKey());
 
-        $valid = $signature->check(
-            $this->httpRequest->headers->get('signature'),
-            $this->httpRequest->getUri(),
-            $this->httpRequest->headers->get('salt'),
-            $this->httpRequest->headers->get('timestamp'),
-            trim($this->httpRequest->getContent())
-        );
-
-        if (! $valid) {
+        if (! $signature->checkRequest($this->httpRequest)) {
             throw new InvalidResponseException('signature is invalid');
         }
 

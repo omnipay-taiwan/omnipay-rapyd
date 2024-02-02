@@ -54,6 +54,22 @@ class Signature
         ];
     }
 
+    public function check($plainText, $urlPath, $salt, $timestamp, $content)
+    {
+        $signature = base64_encode(
+            hash_hmac("sha256", implode('', [
+                $urlPath,
+                $salt,
+                $timestamp,
+                $this->accessKey,
+                $this->secretKey,
+                $content,
+            ]), $this->secretKey)
+        );
+
+        return hash_equals($plainText, $signature);
+    }
+
     protected function generateString()
     {
         return Helper::generateString();

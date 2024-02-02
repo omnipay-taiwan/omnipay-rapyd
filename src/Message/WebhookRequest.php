@@ -4,6 +4,7 @@ namespace Omnipay\Rapyd\Message;
 
 use Omnipay\Common\Exception\InvalidResponseException;
 use Omnipay\Common\Message\NotificationInterface;
+use Omnipay\Rapyd\Signature;
 use Omnipay\Rapyd\Traits\HasRapyd;
 
 class WebhookRequest extends AbstractRequest implements NotificationInterface
@@ -15,31 +16,21 @@ class WebhookRequest extends AbstractRequest implements NotificationInterface
      */
     public function getData()
     {
-        $urlPath = $this->httpRequest->getUri();
-        $timestamp = $this->httpRequest->headers->get('timestamp');
-        $salt = $this->httpRequest->headers->get('salt');
-        $signature = $this->httpRequest->headers->get('signature');
-        $content = trim($this->httpRequest->getContent());
+        $signature = new Signature($this->getAccessKey(), $this->getSecretKey());
 
-        $signed = base64_encode(hash_hmac("sha256",
-                implode('',
-                    [
-                        $urlPath,
-                        $salt,
-                        $timestamp,
-                        $this->getAccessKey(),
-                        $this->getSecretKey(),
-                        $content,
-                    ]
-                ),
-                $this->getSecretKey())
+        $valid = $signature->check(
+            $this->httpRequest->headers->get('signature'),
+            $this->httpRequest->getUri(),
+            $this->httpRequest->headers->get('salt'),
+            $this->httpRequest->headers->get('timestamp'),
+            trim($this->httpRequest->getContent())
         );
 
-        if ($signature !== $signed) {
+        if (! $valid) {
             throw new InvalidResponseException('signature is invalid');
         }
 
-        return json_decode($content, true);
+        return json_decode(trim($this->httpRequest->getContent()), true);
     }
 
     public function sendData($data)

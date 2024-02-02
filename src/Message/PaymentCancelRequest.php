@@ -28,8 +28,7 @@ class PaymentCancelRequest extends AbstractRequest
     public function sendData($data)
     {
         $uri = $this->getEndpoint().'/v1/payments/'.$data['payment'];
-        $signature = new Signature($this->getAccessKey(), $this->getSecretKey());
-        $clientHelper = new ClientHelper($this->httpClient, $signature);
+        $clientHelper = new ClientHelper($this->httpClient, Signature::create($this));
         $result = $clientHelper->request('POST', $uri, $data);
 
         return $this->response = new PaymentCancelResponse($this, $result);

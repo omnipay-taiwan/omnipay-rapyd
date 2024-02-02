@@ -16,10 +16,8 @@ class WebhookRequest extends AbstractRequest implements NotificationInterface
      */
     public function getData()
     {
-        $signature = new Signature($this->getAccessKey(), $this->getSecretKey());
-
-        if (! $signature->checkRequest($this->httpRequest)) {
-            throw new InvalidResponseException('signature is invalid');
+        if (! Signature::create($this)->checkRequest($this->httpRequest)) {
+            throw new InvalidResponseException('Invalid Signature');
         }
 
         return json_decode(trim($this->httpRequest->getContent()), true);

@@ -3,6 +3,7 @@
 namespace Omnipay\Rapyd;
 
 use DateTime;
+use Omnipay\Rapyd\Traits\HasRapyd;
 use Symfony\Component\HttpFoundation\Request;
 
 class Signature
@@ -21,6 +22,15 @@ class Signature
     {
         $this->accessKey = $accessKey;
         $this->secretKey = $secretKey;
+    }
+
+    /**
+     * @param  HasRapyd  $request
+     * @return self
+     */
+    public static function create($request)
+    {
+        return new self($request->getAccessKey(), $request->getSecretKey());
     }
 
     /**

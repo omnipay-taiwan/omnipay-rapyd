@@ -578,8 +578,7 @@ class CheckoutPurchaseRequest extends AbstractRequest
     public function sendData($data)
     {
         $uri = $this->getEndpoint().'/v1/checkout';
-        $signature = new Signature($this->getAccessKey(), $this->getSecretKey());
-        $clientHelper = new ClientHelper($this->httpClient, $signature);
+        $clientHelper = new ClientHelper($this->httpClient, Signature::create($this));
         $result = $clientHelper->request('POST', $uri, [], $data);
 
         return $this->response = new CheckoutPurchaseResponse($this, $result);

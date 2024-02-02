@@ -61,8 +61,7 @@ class RefundCreateRequest extends AbstractRequest
     public function sendData($data)
     {
         $uri = $this->getEndpoint().'/v1/refunds/';
-        $signature = new Signature($this->getAccessKey(), $this->getSecretKey());
-        $clientHelper = new ClientHelper($this->httpClient, $signature);
+        $clientHelper = new ClientHelper($this->httpClient, Signature::create($this));
         $result = $clientHelper->request('POST', $uri, $data);
 
         return $this->response = new RefundCreateResponse($this, $result);

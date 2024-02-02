@@ -42,8 +42,7 @@ class CheckoutFetchTransactionRequest extends AbstractRequest
     public function sendData($data)
     {
         $uri = $this->getEndpoint().'/v1/checkout/'.$data['checkout'];
-        $signature = new Signature($this->getAccessKey(), $this->getSecretKey());
-        $clientHelper = new ClientHelper($this->httpClient, $signature);
+        $clientHelper = new ClientHelper($this->httpClient, Signature::create($this));
         $result = $clientHelper->request('GET', $uri);
 
         return $this->response = new CheckoutFetchTransactionResponse($this, $result);

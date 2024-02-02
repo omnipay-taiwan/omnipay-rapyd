@@ -6,6 +6,7 @@ trait HasMetadata
 {
     /**
      * A JSON object defined by the client. See [Metadata](https://docs.rapyd.net/en/metadata.html).
+     *
      * @param  array  $value
      */
     public function setMetadata($value)
@@ -20,5 +21,4 @@ trait HasMetadata
     {
         return $this->getParameter('metadata');
     }
-
 }

@@ -6,6 +6,7 @@ trait HasMerchantReferenceId
 {
     /**
      * Identifier defined by the client for reference purposes. Limit: 45 characters.
+     *
      * @param  string  $value
      */
     public function setMerchantReferenceId($value)

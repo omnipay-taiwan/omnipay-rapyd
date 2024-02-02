@@ -6,6 +6,7 @@ trait HasPaymentId
 {
     /**
      * ID of the payment object that the refund is charged against. String starting with payment_.
+     *
      * @param  string  $value
      * @return self
      */

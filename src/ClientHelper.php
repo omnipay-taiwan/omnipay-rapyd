@@ -7,11 +7,11 @@ use Omnipay\Common\Http\ClientInterface;
 
 class ClientHelper
 {
-
     /**
      * @var ClientInterface
      */
     private $httpClient;
+
     /**
      * @var Signature
      */

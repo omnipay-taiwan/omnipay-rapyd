@@ -10,12 +10,12 @@ class FxFee
 {
     use ParametersTrait;
 
-    public function __construct(array $parameters = null)
+    public function __construct(?array $parameters = null)
     {
         $this->initialize($parameters);
     }
 
-    public function initialize(array $parameters = null)
+    public function initialize(?array $parameters = null)
     {
         $this->parameters = new ParameterBag;
 
@@ -28,6 +28,7 @@ class FxFee
      * Specifies how the fee is calculated. One of the following:
      * - net - The fee is deducted from the amount paid. For example, in a payment of $100 with a fee of 5%, the recipient receives $95.00 and the $5.00 fee goes to the client wallet.
      * - gross - The fee is added to the amount paid. For example, for a transaction of $100 with a fee of 5%, the sender pays $105.00.
+     *
      * @param  string  $value
      * @return TransactionFee
      */

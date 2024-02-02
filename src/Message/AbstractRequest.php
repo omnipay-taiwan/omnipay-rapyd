@@ -6,11 +6,11 @@ use Omnipay\Common\Message\AbstractRequest as BaseAbstractRequest;
 
 /**
  * Abstract Request
- *
  */
 abstract class AbstractRequest extends BaseAbstractRequest
 {
     protected $liveEndpoint = 'https://api.rapyd.net';
+
     protected $testEndpoint = 'https://sandboxapi.rapyd.net';
 
     protected function getEndpoint()

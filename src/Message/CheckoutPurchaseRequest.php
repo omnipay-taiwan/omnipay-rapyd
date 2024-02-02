@@ -16,10 +16,10 @@ use Omnipay\Rapyd\Traits\HasRapyd;
 
 class CheckoutPurchaseRequest extends AbstractRequest
 {
-    use HasRapyd;
-    use HasMerchantReferenceId;
     use HasEwallets;
+    use HasMerchantReferenceId;
     use HasMetadata;
+    use HasRapyd;
 
     /**
      * Details of an account funding transaction (AFT), which transfers funds from a card to a cardholder's wallet.
@@ -32,6 +32,7 @@ class CheckoutPurchaseRequest extends AbstractRequest
      * Relevant to payment method types that support AFT.
      * To enable this feature, contact [Rapyd Client Support](https://dashboard.rapyd.net/settings/support-center/open).
      * Contains the following fields:
+     *
      * @param  AccountFundingTransaction  $value
      */
     public function setAccountFundingTransaction($value)
@@ -50,6 +51,7 @@ class CheckoutPurchaseRequest extends AbstractRequest
     /**
      * URL where the customer is redirected after pressing Back to Website to exit the hosted page.
      * This URL overrides the merchant_website URL. Does not support localhost URLs.
+     *
      * @param  string  $value
      * @return self
      */
@@ -72,6 +74,7 @@ class CheckoutPurchaseRequest extends AbstractRequest
      * false - Authorize the payment, then capture some or all of the payment at a later time,
      *         when the merchant runs the [Capture Payment](https://docs.rapyd.net/en/capture-payment.html) method.
      * Default value: true
+     *
      * @param  bool  $value
      */
     public function setCapture($value)
@@ -90,6 +93,7 @@ class CheckoutPurchaseRequest extends AbstractRequest
     /**
      * URL where the customer is redirected after pressing Finish to exit the hosted page.
      * This URL overrides the merchant_website URL. Does not support localhost URLs.
+     *
      * @param  string  $value
      */
     public function setCompleteCheckoutUrl($value)
@@ -108,6 +112,7 @@ class CheckoutPurchaseRequest extends AbstractRequest
     /**
      * URL where the customer is redirected when payment is successful, after returning from an external page such as a 3DS page.
      * Does not support localhost URLs.
+     *
      * @param  string  $value
      */
     public function setCompletePaymentUrl($value)
@@ -128,6 +133,7 @@ class CheckoutPurchaseRequest extends AbstractRequest
      * Three-letter ISO 4217 code.
      * In FX transactions, when fixed_side is buy, it is the currency received by the merchant.
      * When fixed_side is sell, it is the currency charged to the buyer.
+     *
      * @param  string  $value
      */
     public function setCountry($value)
@@ -145,6 +151,7 @@ class CheckoutPurchaseRequest extends AbstractRequest
 
     /**
      * Describes customizations of the page as it appears to the customer.
+     *
      * @param  CustomElements  $value
      */
     public function setCustomElements($value)
@@ -164,6 +171,7 @@ class CheckoutPurchaseRequest extends AbstractRequest
      * ID of the customer. String starting with cus_.
      * When used, the customer has the option to save card details for future purchases.
      * This field is for some payment methods and for all company-type wallets.
+     *
      * @param  string  $value
      */
     public function setCustomer($value)
@@ -182,6 +190,7 @@ class CheckoutPurchaseRequest extends AbstractRequest
     /**
      * URL where the customer is redirected when payment is not successful, after returning from an external page, such as a 3DS page.
      * Does not support localhost URLs.
+     *
      * @param  string  $value
      */
     public function setErrorPaymentUrl($value)
@@ -199,6 +208,7 @@ class CheckoutPurchaseRequest extends AbstractRequest
 
     /**
      * Determines whether the payment is held in escrow for later release.
+     *
      * @param  bool  $value
      */
     public function setEscrow($value)
@@ -217,6 +227,7 @@ class CheckoutPurchaseRequest extends AbstractRequest
     /**
      * Determines the number of days after creation of the payment that funds are released from escrow.
      * Funds are released at 5:00 pm GMT on the day indicated. Integer, range: 1-90.
+     *
      * @param  int  $value
      */
     public function setEscrowReleaseDays($value)
@@ -236,6 +247,7 @@ class CheckoutPurchaseRequest extends AbstractRequest
      * ID of the wallet that the money is paid into.
      * String starting with ewallet_.
      * Relevant for specifying a single wallet in the request.
+     *
      * @param  string  $value
      */
     public function setEwallet($value)
@@ -251,11 +263,11 @@ class CheckoutPurchaseRequest extends AbstractRequest
         return $this->getParameter('ewallet');
     }
 
-
     /**
      * Time when the payment expires if it is not completed, in Unix time.
      * When both expiration and payment_expiration are set, the payment expires at the earlier time.
      * Default value: 14 days after creation of the checkout page.
+     *
      * @param  int  $value
      */
     public function setExpiration($value)
@@ -276,6 +288,7 @@ class CheckoutPurchaseRequest extends AbstractRequest
      * - buy - The checkout page shows the currency that the seller (merchant) receives for goods or services. For example, a US-based merchant wants to charge 100 USD. The buyer (customer) pays the amount in MXN that converts to 100 USD.
      * - sell - The checkout page shows the currency that the buyer is charged with to purchase goods or services from the seller. For example, a US-based merchant wants to charge a buyer 2,000 MXN and will accept whatever amount in USD that is converted from 2,000 MXN.
      * Default value: buy
+     *
      * @param  string  $value
      */
     public function setFixedSide($value)
@@ -295,6 +308,7 @@ class CheckoutPurchaseRequest extends AbstractRequest
      * Determines the default language of the hosted page. For a list of values, see [List Supported Languages](https://docs.rapyd.net/en/list-supported-languages.html).
      * - When this parameter is null, the language of the user's browser is used.
      * - If the language of the user's browser cannot be determined, the default language is English.
+     *
      * @param  string  $value
      */
     public function setLanguage($value)
@@ -315,6 +329,7 @@ class CheckoutPurchaseRequest extends AbstractRequest
      * Can include a payment_method_options object.
      * The fields are not displayed to the customer on the hosted page.
      * To get the fields that the merchant and customer each fill in for a payment method, use [Get Payment Method Required Fields](https://docs.rapyd.net/en/get-payment-method-required-fields.html).
+     *
      * @param  array  $value
      */
     public function setMerchantFields($value)
@@ -330,11 +345,11 @@ class CheckoutPurchaseRequest extends AbstractRequest
         return $this->getParameter('merchant_fields');
     }
 
-
     /**
      * End of the time when the customer can use the hosted page, in Unix time.
      * If page_expiration is not set, the hosted page expires 14 days after creation.
      * Range: 1 minute to 30 days.
+     *
      * @param  int  $value
      */
     public function setPageExpiration($value)
@@ -353,6 +368,7 @@ class CheckoutPurchaseRequest extends AbstractRequest
     /**
      * Length of time for the payment to be completed after it is created, measured in seconds.
      * When both expiration and payment_expiration are set, the payment expires at the earlier time.
+     *
      * @param  int  $value
      */
     public function setPaymentExpiration($value)
@@ -372,6 +388,7 @@ class CheckoutPurchaseRequest extends AbstractRequest
      * Object that defines transaction fees and foreign exchange fees.
      * These are fees that the Rapyd merchant can define for its consumers in addition to the payment amount.
      * They are not related to the fees Rapyd charges to its clients.
+     *
      * @param  PaymentFees  $value
      */
     public function setPaymentFees($value)
@@ -391,6 +408,7 @@ class CheckoutPurchaseRequest extends AbstractRequest
      * The type of the payment method. For example, it_visa_card.
      * To get a list of payment methods for a country, use [List Payment Methods by Country](https://docs.rapyd.net/en/list-payment-methods-by-country.html).
      * See [Configuring List of Payment Methods](https://docs.rapyd.net/en/configuring-list-of-payment-methods.html).
+     *
      * @param  string  $value
      */
     public function setPaymentMethodType($value)
@@ -416,6 +434,7 @@ class CheckoutPurchaseRequest extends AbstractRequest
      * - cash
      * - ewallet
      * See [Configuring List of Payment Methods](https://docs.rapyd.net/en/configuring-list-of-payment-methods.html).
+     *
      * @param  array  $value
      */
     public function setPaymentMethodTypeCategories($value)
@@ -434,6 +453,7 @@ class CheckoutPurchaseRequest extends AbstractRequest
     /**
      * List of payment methods that are excluded from display on the checkout page.
      * See [Configuring List of Payment Methods](https://docs.rapyd.net/en/configuring-list-of-payment-methods.html).
+     *
      * @param  array  $value
      */
     public function setPaymentMethodTypesExclude($value)
@@ -453,6 +473,7 @@ class CheckoutPurchaseRequest extends AbstractRequest
      * List of payment methods that are displayed on the checkout page.
      * The payment methods appear on the page in the order provided.
      * See [Configuring List of Payment Methods](https://docs.rapyd.net/en/configuring-list-of-payment-methods.html).
+     *
      * @param  array  $value
      */
     public function setPaymentMethodTypesInclude($value)
@@ -476,6 +497,7 @@ class CheckoutPurchaseRequest extends AbstractRequest
      * The converted amount in the requested currency.
      * The exchange rate.
      * Relevant to payments with FX.
+     *
      * @param  string  $value
      */
     public function setRequestedCurrency($value)
@@ -493,6 +515,7 @@ class CheckoutPurchaseRequest extends AbstractRequest
 
     /**
      * A text description suitable for a customer's payment statement. 5-22 characters.
+     *
      * @param  string  $value
      */
     public function setStatementDescriptor($value)

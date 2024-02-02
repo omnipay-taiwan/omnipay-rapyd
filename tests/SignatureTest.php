@@ -9,18 +9,19 @@ use PHPUnit\Framework\TestCase;
 class SignatureTest extends TestCase
 {
     private $accessKey = '41473424D6BDB8C19778';
+
     private $secretKey = 'a699faeb232ecf91666c7db11e2ec615a90ef3139d059273f963cbb28acd7ff582d8f08fd34419e8';
 
     public function testGetHeaders(): void
     {
         $signature = new StubSignature($this->accessKey, $this->secretKey);
         $body = [
-            "amount" => 100,
-            "complete_checkout_url" => "https://example.com/complete",
-            "country" => "US",
-            "currency" => "USD",
-            "cancel_checkout_url" => "https://example.com/cancel",
-            "language" => "en",
+            'amount' => 100,
+            'complete_checkout_url' => 'https://example.com/complete',
+            'country' => 'US',
+            'currency' => 'USD',
+            'cancel_checkout_url' => 'https://example.com/cancel',
+            'language' => 'en',
         ];
 
         self::assertEquals(
@@ -43,16 +44,16 @@ class SignatureTest extends TestCase
         $body_string = ! is_null($body) ? json_encode($body, JSON_UNESCAPED_SLASHES) : '';
         $sig_string = "$http_method$path$salt$timestamp$access_key$secret_key$body_string";
 
-        $hash_sig_string = hash_hmac("sha256", $sig_string, $secret_key);
+        $hash_sig_string = hash_hmac('sha256', $sig_string, $secret_key);
         $signature = base64_encode($hash_sig_string);
 
         return [
-            "Content-Type" => 'application/json',
-            "access_key" => $access_key,
-            "salt" => $salt,
-            "timestamp" => $timestamp,
-            "signature" => $signature,
-            "idempotency" => $idempotency,
+            'Content-Type' => 'application/json',
+            'access_key' => $access_key,
+            'salt' => $salt,
+            'timestamp' => $timestamp,
+            'signature' => $signature,
+            'idempotency' => $idempotency,
         ];
     }
 }

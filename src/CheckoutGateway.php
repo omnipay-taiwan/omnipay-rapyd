@@ -3,12 +3,11 @@
 namespace Omnipay\Rapyd;
 
 use Omnipay\Common\AbstractGateway;
-use Omnipay\Rapyd\Message\AuthorizeRequest;
-use Omnipay\Rapyd\Message\WebhookRequest;
 use Omnipay\Rapyd\Message\CheckoutFetchTransactionRequest;
 use Omnipay\Rapyd\Message\CheckoutPurchaseRequest;
-use Omnipay\Rapyd\Message\RefundCreateRequest;
 use Omnipay\Rapyd\Message\PaymentCancelRequest;
+use Omnipay\Rapyd\Message\RefundCreateRequest;
+use Omnipay\Rapyd\Message\WebhookRequest;
 use Omnipay\Rapyd\Traits\HasRapyd;
 
 /**

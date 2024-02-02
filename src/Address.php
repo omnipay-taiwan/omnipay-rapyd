@@ -10,12 +10,12 @@ class Address
 {
     use ParametersTrait;
 
-    public function __construct(array $parameters = null)
+    public function __construct(?array $parameters = null)
     {
         $this->initialize($parameters);
     }
 
-    public function initialize(array $parameters = null)
+    public function initialize(?array $parameters = null)
     {
         $this->parameters = new ParameterBag;
 
@@ -26,6 +26,7 @@ class Address
 
     /**
      * Name of the canton administrative subdivision, as used in banking.
+     *
      * @param  string  $value
      */
     public function setCanton($value)
@@ -45,6 +46,7 @@ class Address
 
     /**
      * City portion of the address. Required for issuance of a card to the wallet contact.
+     *
      * @param  string  $value
      */
     public function setCity($value)
@@ -62,9 +64,9 @@ class Address
         return $this->getParameter('city');
     }
 
-
     /**
      * The two-letter ISO 3166-1 ALPHA-2 code for the country.
+     *
      * @param  string  $value
      */
     public function setCountry($value)
@@ -84,6 +86,7 @@ class Address
 
     /**
      * Name of the district administrative subdivision, as used in banking.
+     *
      * @param  string  $value
      */
     public function setDistrict($value)
@@ -101,9 +104,9 @@ class Address
         return $this->getParameter('district');
     }
 
-
     /**
      * Line 1 of the address, such as a building number and street name.
+     *
      * @param  string  $value
      */
     public function setLine1($value)
@@ -121,9 +124,9 @@ class Address
         return $this->getParameter('line_1');
     }
 
-
     /**
      * Line 2 of the address, such as a suite or apartment number, or the name of a named building.
+     *
      * @param  string  $value
      */
     public function setLine2($value)
@@ -141,9 +144,9 @@ class Address
         return $this->getParameter('line_2');
     }
 
-
     /**
      * Line 3 of the address.
+     *
      * @param  string  $value
      */
     public function setLine3($value)
@@ -161,9 +164,9 @@ class Address
         return $this->getParameter('line_3');
     }
 
-
     /**
      * A JSON object defined by the client. See Metadata.
+     *
      * @param  array  $value
      */
     public function setMetadata($value)
@@ -181,10 +184,10 @@ class Address
         return $this->getParameter('metadata');
     }
 
-
     /**
      * The name of a contact person or an "in care of" person at this address.
      * For a personal wallet contact type, alphabetic characters and spaces.
+     *
      * @param  string  $value
      */
     public function setName($value)
@@ -202,9 +205,9 @@ class Address
         return $this->getParameter('name');
     }
 
-
     /**
      * Phone number associated with this specific address in E.164 format. Must be unique.
+     *
      * @param  string  $value
      */
     public function setPhoneNumber($value)
@@ -222,9 +225,9 @@ class Address
         return $this->getParameter('phone_number');
     }
 
-
     /**
      * State or province portion of the address.
+     *
      * @param  string  $value
      */
     public function setState($value)
@@ -243,9 +246,9 @@ class Address
         return $this->getParameter('state');
     }
 
-
     /**
      * Postal code portion of the address.
+     *
      * @param  string  $value
      */
     public function setZip($value)

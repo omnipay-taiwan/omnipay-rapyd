@@ -13,6 +13,7 @@ class CheckoutFetchTransactionRequest extends AbstractRequest
 
     /**
      * ID of the checkout page. String starting with checkout_.
+     *
      * @param  string  $value
      */
     public function setCheckout($value)

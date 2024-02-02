@@ -10,12 +10,12 @@ class PaymentFees
 {
     use ParametersTrait;
 
-    public function __construct(array $parameters = null)
+    public function __construct(?array $parameters = null)
     {
         $this->initialize($parameters);
     }
 
-    public function initialize(array $parameters = null)
+    public function initialize(?array $parameters = null)
     {
         $this->parameters = new ParameterBag;
 
@@ -26,6 +26,7 @@ class PaymentFees
 
     /**
      * Describes the fee for processing the transaction.
+     *
      * @param  TransactionFee  $value
      */
     public function setTransactionFee($value)
@@ -43,6 +44,7 @@ class PaymentFees
 
     /**
      * Describes the fees for processing the currency exchange. Relevant to payments with FX.
+     *
      * @param  FxFee  $value
      * @return PaymentFees
      */
@@ -61,6 +63,7 @@ class PaymentFees
 
     /**
      * The total gross fees for the transaction, in units defined by currency_code.
+     *
      * @param  numeric  $value
      */
     public function setGrossFees($value)
@@ -78,6 +81,7 @@ class PaymentFees
 
     /**
      * The total net fees for the transaction, in units defined by merchant_requested_currency.
+     *
      * @param  numeric  $value
      */
     public function setNetFees($value)
@@ -95,6 +99,7 @@ class PaymentFees
 
     /**
      * The amount of the fee.
+     *
      * @param  numeric  $value
      */
     public function setTotalMerchantFees($value)

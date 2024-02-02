@@ -2,7 +2,6 @@
 
 namespace Omnipay\Rapyd\Tests\Message;
 
-
 use Omnipay\Rapyd\Message\RefundCreateRequest;
 use Omnipay\Tests\TestCase;
 

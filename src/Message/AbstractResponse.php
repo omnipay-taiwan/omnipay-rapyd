@@ -6,7 +6,6 @@ use Omnipay\Common\Message\AbstractResponse as BaseAbstractResponse;
 
 /**
  * Abstract Request
- *
  */
 abstract class AbstractResponse extends BaseAbstractResponse
 {

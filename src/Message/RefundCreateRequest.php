@@ -13,11 +13,11 @@ use Omnipay\Rapyd\Traits\HasRapyd;
 
 class RefundCreateRequest extends AbstractRequest
 {
-    use HasRapyd;
-    use HasMerchantReferenceId;
     use HasEwallets;
+    use HasMerchantReferenceId;
     use HasMetadata;
     use HasPaymentId;
+    use HasRapyd;
 
     public function setEwallets($value)
     {

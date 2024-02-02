@@ -10,8 +10,8 @@ use Omnipay\Rapyd\Traits\HasRapyd;
 
 class PaymentCancelRequest extends AbstractRequest
 {
-    use HasRapyd;
     use HasPaymentId;
+    use HasRapyd;
 
     public function getData()
     {

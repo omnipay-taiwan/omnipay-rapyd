@@ -11,15 +11,12 @@ class Signature
      * @var string
      */
     private $accessKey;
+
     /**
      * @var string
      */
     private $secretKey;
 
-    /**
-     * @param  string  $accessKey
-     * @param  string  $secretKey
-     */
     public function __construct(string $accessKey, string $secretKey)
     {
         $this->accessKey = $accessKey;
@@ -29,7 +26,7 @@ class Signature
     /**
      * @param  string  $method
      * @param  string  $path
-     * @param ?array  $body
+     * @param  ?array  $body
      * @return array
      */
     public function getHeaders($method, $path, $body = null)
@@ -46,11 +43,11 @@ class Signature
         ]);
 
         return [
-            "Content-Type" => 'application/json',
+            'Content-Type' => 'application/json',
             'access_key' => $this->accessKey,
             'salt' => $salt,
             'timestamp' => $timestamp,
-            'signature' => base64_encode(hash_hmac("sha256", $sigString, $this->secretKey)),
+            'signature' => base64_encode(hash_hmac('sha256', $sigString, $this->secretKey)),
             'idempotency' => $idempotency,
         ];
     }
@@ -69,7 +66,7 @@ class Signature
     public function check($plainText, $urlPath, $salt, $timestamp, $content)
     {
         $signature = base64_encode(
-            hash_hmac("sha256", implode('', [
+            hash_hmac('sha256', implode('', [
                 $urlPath,
                 $salt,
                 $timestamp,

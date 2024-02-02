@@ -10,12 +10,12 @@ class CustomElements
 {
     use ParametersTrait;
 
-    public function __construct(array $parameters = null)
+    public function __construct(?array $parameters = null)
     {
         $this->initialize($parameters);
     }
 
-    public function initialize(array $parameters = null)
+    public function initialize(?array $parameters = null)
     {
         $this->parameters = new ParameterBag;
 
@@ -30,6 +30,7 @@ class CustomElements
      * - true - The address fields appear on the checkout page.
      * - false - The address fields appear only if the country is US, GB or CA.
      * Default value: false
+     *
      * @param  bool  $value
      */
     public function setBillingAddressCollect($value)
@@ -47,6 +48,7 @@ class CustomElements
 
     /**
      * The name of the card owner, printed on the front of the card.
+     *
      * @param  string  $value
      */
     public function setCardholderName($value)
@@ -68,6 +70,7 @@ class CustomElements
      * - false - The payment description does not appear.
      * Default value: false
      * Relevant when description is passed in the [Create Checkout Page](https://docs.rapyd.net/en/create-checkout-page.html) request.
+     *
      * @param  bool  $value
      */
     public function setDisplayDescription($value)
@@ -98,6 +101,7 @@ class CustomElements
      * - The [Create Checkout Page](https://docs.rapyd.net/en/create-checkout-page.html) request passes requested_currency.
      * - fixed_side is buy.
      * - One or more payment methods support the values for currency and requested_currency.
+     *
      * @param  bool  $value
      */
     public function setDynamicCurrencyConversion($value)
@@ -115,6 +119,7 @@ class CustomElements
 
     /**
      * Reserved.
+     *
      * @param  string  $value
      */
     public function setMerchantColor($value)
@@ -136,6 +141,7 @@ class CustomElements
      * - true - The currency and the exchange rate are hidden.
      * - false - The currency and the exchange rate appear.
      * Default value: false
+     *
      * @param  bool  $value
      */
     public function setMerchantCurrencyOnly($value)
@@ -156,6 +162,7 @@ class CustomElements
      * - true - Payment fees appear when the payment_fees object is set in the Create Checkout Page request.
      * - false - Payment fees do not appear.
      * Default value: true
+     *
      * @param  bool  $value
      */
     public function setPaymentFeesDisplay($value)
@@ -178,6 +185,7 @@ class CustomElements
      * Default value: false
      *
      * Relevant when customer_id is passed in the Create Checkout Page request.
+     *
      * @param  bool  $value
      */
     public function setSaveCardDefault($value)

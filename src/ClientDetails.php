@@ -10,12 +10,12 @@ class ClientDetails
 {
     use ParametersTrait;
 
-    public function __construct(array $parameters = null)
+    public function __construct(?array $parameters = null)
     {
         $this->initialize($parameters);
     }
 
-    public function initialize(array $parameters = null)
+    public function initialize(?array $parameters = null)
     {
         $this->parameters = new ParameterBag;
 
@@ -26,6 +26,7 @@ class ClientDetails
 
     /**
      * IP address of the customer.
+     *
      * @param  string  $value
      */
     public function setIpAddress($value)
@@ -45,6 +46,7 @@ class ClientDetails
 
     /**
      * Indicates whether the browser is enabled for Java.
+     *
      * @param  bool  $value
      */
     public function setJavaEnabled($value)
@@ -64,6 +66,7 @@ class ClientDetails
 
     /**
      * Indicates whether the browser is enabled for JavaScript.
+     *
      * @param  bool  $value
      */
     public function setJavaScriptEnabled($value)
@@ -83,6 +86,7 @@ class ClientDetails
 
     /**
      * The language the browser is configured for, as defined in IETF BCP 47.
+     *
      * @param  string  $value
      */
     public function setLanguage($value)
@@ -123,6 +127,7 @@ class ClientDetails
 
     /**
      * Height of the customer's screen, in pixels. 1-6 digits.
+     *
      * @param  int  $value
      */
     public function setScreenHeight($value)
@@ -142,6 +147,7 @@ class ClientDetails
 
     /**
      * Width of the customer's screen, in pixels. 1-6 digits.
+     *
      * @param  int  $value
      */
     public function setScreenWidth($value)
@@ -161,6 +167,7 @@ class ClientDetails
 
     /**
      * Difference in minutes between UTC and the customer's time zone. Positive or negative integer.
+     *
      * @param  int  $value
      */
     public function setTimeZoneOffset($value)

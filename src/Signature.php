@@ -86,7 +86,7 @@ class Signature
             ]), $this->secretKey)
         );
 
-        return hash_equals($plainText, $signature);
+        return hash_equals($plainText ?: '', $signature);
     }
 
     protected function generateString()

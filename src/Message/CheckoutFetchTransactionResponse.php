@@ -31,6 +31,6 @@ class CheckoutFetchTransactionResponse extends AbstractResponse
 
     public function getTransactionReference()
     {
-        return $this->data['data']['id'];
+        return $this->data['data']['payment']['id'];
     }
 }

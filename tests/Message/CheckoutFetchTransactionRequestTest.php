@@ -32,7 +32,8 @@ class CheckoutFetchTransactionRequestTest extends TestCase
 
         self::assertEquals(null, $response->getCode());
         self::assertFalse($response->isSuccessful());
-        self::assertEquals('checkout_ac18419fb53bceca963a43560ab3f591', $response->getTransactionReference());
+        self::assertEquals('0912-2021', $response->getTransactionid());
+        self::assertNull($response->getTransactionReference());
 
         $lastRequest = $this->getMockClient()->getLastRequest();
         $path = $lastRequest->getUri()->getPath();
@@ -68,7 +69,8 @@ class CheckoutFetchTransactionRequestTest extends TestCase
 
         self::assertEquals('CLO', $response->getCode());
         self::assertTrue($response->isSuccessful());
-        self::assertEquals('checkout_ac18419fb53bceca963a43560ab3f591', $response->getTransactionReference());
+        self::assertEquals('0912-2021', $response->getTransactionid());
+        self::assertEquals('payment_91b87ed2d4cec7098616d172af171dc8', $response->getTransactionReference());
     }
 
     public function testTransactionRefund()
@@ -96,6 +98,7 @@ class CheckoutFetchTransactionRequestTest extends TestCase
 
         self::assertEquals('CLO', $response->getCode());
         self::assertFalse($response->isSuccessful());
-        self::assertEquals('checkout_ac18419fb53bceca963a43560ab3f591', $response->getTransactionReference());
+        self::assertEquals('0912-2021', $response->getTransactionid());
+        self::assertEquals('payment_91b87ed2d4cec7098616d172af171dc8', $response->getTransactionReference());
     }
 }

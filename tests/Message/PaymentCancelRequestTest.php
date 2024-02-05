@@ -27,6 +27,7 @@ class PaymentCancelRequestTest extends TestCase
         $response = $request->send();
 
         self::assertTrue($response->isSuccessful());
+        self::assertEquals('', $response->getMessage());
         self::assertEquals('payment_00778be57b9087180596678817973e61', $response->getTransactionReference());
     }
 }

@@ -9,6 +9,11 @@ class PaymentCancelResponse extends AbstractResponse
         return $this->getCode() === 'CAN';
     }
 
+    public function getMessage()
+    {
+        return $this->data['data']['failure_message'];
+    }
+
     /**
      * status
      * Indicates the status of the payment. One of the following:

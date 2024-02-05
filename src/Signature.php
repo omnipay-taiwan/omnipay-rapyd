@@ -41,31 +41,47 @@ class Signature
      */
     public function getHeaders($method, $path, $body = null)
     {
-        $idempotency = $this->generateString();
-        $httpMethod = strtolower($method);
+        $timestamp = (new DateTime())->getTimestamp();
         $salt = $this->generateString();
-        $date = new DateTime();
-        $timestamp = $date->getTimestamp();
+        $idempotency = $this->generateString();
 
-        $bodyString = ! is_null($body) ? json_encode($body, JSON_UNESCAPED_SLASHES) : '';
-        $sigString = implode('', [
-            $httpMethod, $path, $salt, $timestamp, $this->accessKey, $this->secretKey, $bodyString,
-        ]);
+        $data = [
+            strtolower($method),
+            $path,
+            $salt,
+            $timestamp,
+            $this->accessKey,
+            $this->secretKey,
+            ! is_null($body) ? json_encode($body, JSON_UNESCAPED_SLASHES) : '',
+        ];
 
         return [
             'Content-Type' => 'application/json',
             'access_key' => $this->accessKey,
             'salt' => $salt,
             'timestamp' => $timestamp,
-            'signature' => base64_encode(hash_hmac('sha256', $sigString, $this->secretKey)),
+            'signature' => $this->makeHash($data),
             'idempotency' => $idempotency,
         ];
     }
 
+    public function check($knownString, $url, $salt, $timestamp, $content)
+    {
+        return hash_equals($knownString, $this->makeHash([
+            $url,
+            $salt,
+            $timestamp,
+            $this->accessKey,
+            $this->secretKey,
+            $content,
+        ]));
+    }
+
+
     public function checkRequest(Request $request)
     {
         return $this->check(
-            $request->headers->get('signature'),
+            $request->headers->get('signature') ?: '',
             $request->getUri(),
             $request->headers->get('salt'),
             $request->headers->get('timestamp'),
@@ -73,20 +89,15 @@ class Signature
         );
     }
 
-    public function check($plainText, $urlPath, $salt, $timestamp, $content)
+    /**
+     * @param  array  $data
+     * @return string
+     */
+    public function makeHash($data): string
     {
-        $signature = base64_encode(
-            hash_hmac('sha256', implode('', [
-                $urlPath,
-                $salt,
-                $timestamp,
-                $this->accessKey,
-                $this->secretKey,
-                $content,
-            ]), $this->secretKey)
+        return base64_encode(
+            hash_hmac('sha256', implode('', $data), $this->secretKey)
         );
-
-        return hash_equals($plainText ?: '', $signature);
     }
 
     protected function generateString()

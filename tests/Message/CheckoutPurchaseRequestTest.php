@@ -2,7 +2,7 @@
 
 namespace Omnipay\Rapyd\Tests\Message;
 
-use Omnipay\Common\Exception\InvalidRequestException;
+use Omnipay\Common\Exception\InvalidResponseException;
 use Omnipay\Rapyd\Message\CheckoutPurchaseRequest;
 use Omnipay\Tests\TestCase;
 
@@ -109,7 +109,7 @@ class CheckoutPurchaseRequestTest extends TestCase
 
     public function testSendFailed()
     {
-        $this->expectException(InvalidRequestException::class);
+        $this->expectException(InvalidResponseException::class);
         $this->expectExceptionMessage('The request tried to create a checkout page, but one or more of the payment method type categories was not enabled. The request was rejected. Corrective action: Use the Client Portal to enable the payment method type categories you want to appear in the checkout page.');
 
         $request = new CheckoutPurchaseRequest($this->getHttpClient(), $this->getHttpRequest());

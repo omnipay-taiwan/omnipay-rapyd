@@ -2,7 +2,7 @@
 
 namespace Omnipay\Rapyd;
 
-use Omnipay\Common\Exception\InvalidRequestException;
+use Omnipay\Common\Exception\InvalidResponseException;
 use Omnipay\Common\Http\ClientInterface;
 
 class ClientHelper
@@ -24,7 +24,7 @@ class ClientHelper
     }
 
     /**
-     * @throws InvalidRequestException
+     * @throws InvalidResponseException
      */
     public function request($method, $url, $headers = [], $body = null)
     {
@@ -38,7 +38,7 @@ class ClientHelper
 
         $result = json_decode((string) $response->getBody(), true);
         if ($result['status']['status'] !== 'SUCCESS') {
-            throw new InvalidRequestException($result['status']['message']);
+            throw new InvalidResponseException($result['status']['message']);
         }
 
         return $result;

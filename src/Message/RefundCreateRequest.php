@@ -2,7 +2,7 @@
 
 namespace Omnipay\Rapyd\Message;
 
-use Omnipay\Common\Exception\InvalidRequestException;
+use Omnipay\Common\Exception\InvalidResponseException;
 use Omnipay\Rapyd\ClientHelper;
 use Omnipay\Rapyd\Signature;
 use Omnipay\Rapyd\Traits\HasEwallets;
@@ -56,7 +56,7 @@ class RefundCreateRequest extends AbstractRequest
     }
 
     /**
-     * @throws InvalidRequestException
+     * @throws InvalidResponseException
      */
     public function sendData($data)
     {

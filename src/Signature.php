@@ -77,7 +77,6 @@ class Signature
         ]));
     }
 
-
     public function checkRequest(Request $request)
     {
         return $this->check(
@@ -91,7 +90,6 @@ class Signature
 
     /**
      * @param  array  $data
-     * @return string
      */
     public function makeHash($data): string
     {
